@@ -8,6 +8,7 @@ import 'package:hackathon2020/const.dart';
 import 'package:js/js.dart';
 import 'package:weather/weather_library.dart';
 
+import 'center_clock.dart';
 import 'locationJs.dart';
 
 class MyHome extends StatefulWidget {
@@ -22,11 +23,13 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
   AnimationController controller3;
   AnimationController controller4;
   TabController tabController;
+  AnimationController animationController;
 
   String key = '856822fd8e22db5e1ba48c0e7d69844a';
   WeatherStation ws;
   var lat, lon;
   List<Weather> _data = [];
+  var scale;
 
   @override
   void initState() {
@@ -54,6 +57,15 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
       duration: Duration(seconds: 2),
     );
     tabController = TabController(length: 3, vsync: this);
+    animationController =
+        AnimationController(duration: Duration(milliseconds: 900), vsync: this);
+
+    scale = Tween<double>(
+      begin: 1.5,
+      end: 0.0,
+    ).animate(
+      CurvedAnimation(parent: animationController, curve: Curves.fastOutSlowIn),
+    );
   }
 
   _getCurrentLocation() async {
@@ -79,13 +91,18 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
     });
   }
 
+  _open() {
+    animationController.forward();
+  }
+
+  _close() {
+    animationController.reverse();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(
-        title: Text('MYHOME'),
-      ),
       body: Container(
         width: double.infinity,
         child: AnimatedBuilder(
@@ -215,32 +232,79 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
                   ),
                 ),
                 //Middle
+//                MiddleWidget(),
                 Align(
                   alignment: Alignment.center,
-                  child: GestureDetector(
-                    onTap: () {
-                      controller1.reverse(
-                          from: controller1.value == 0.0
-                              ? 1.0
-                              : controller1.value);
-                    },
-                    child: SizedBox(
-                      width: 350,
-                      height: 350,
-                      child: CustomPaint(
-                        painter: CustomCirclePainter(
-                          animation: controller1,
-                          backgroundColor: Colors.white,
-                          color: AppColor.themeColor,
-                        ),
-                        child: Icon(
-                          Icons.laptop,
-                          color: AppColor.themeColor,
-                          size: 200,
-                        ),
-                      ),
-                    ),
-                  ),
+                  child: AnimatedBuilder(
+                      animation: animationController,
+                      builder: (context, builder) {
+                        return Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            Transform.scale(
+                              scale: scale.value - 1.5,
+                              // subtract the beginning value to run the opposite animation
+                              child: Container(
+                                width: 300,
+                                height: 300,
+                                color: Colors.transparent,
+                                child: Stack(
+                                  children: <Widget>[
+                                    new Positioned(
+                                      child: new CircleButton(
+                                          onTap: () => print("Cool"),
+                                          iconData: Icons.favorite_border),
+                                      top: 10.0,
+                                      left: 130.0,
+                                    ),
+                                    new Positioned(
+                                      child: new CircleButton(
+                                          onTap: () => print("Cool"),
+                                          iconData: Icons.timer),
+                                      top: 120.0,
+                                      left: 10.0,
+                                    ),
+                                    new Positioned(
+                                      child: new CircleButton(
+                                          onTap: () => print("Cool"),
+                                          iconData: Icons.place),
+                                      top: 120.0,
+                                      right: 10.0,
+                                    ),
+                                    new Positioned(
+                                      child: new CircleButton(
+                                          onTap: () => print("Cool"),
+                                          iconData: Icons.local_pizza),
+                                      top: 240.0,
+                                      left: 130.0,
+                                    ),
+                                    new Positioned(
+                                      child: new CircleButton(
+                                          onTap: _close,
+                                          iconData:
+                                              FontAwesomeIcons.timesCircle),
+                                      top: 120.0,
+                                      left: 130.0,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Transform.scale(
+                              scale: scale.value,
+                              child: Container(
+                                child: GestureDetector(
+                                  onTap: _open,
+                                  child: Image.asset(
+                                    'assets/images/middle.jpg',
+                                    scale: 2.0,
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        );
+                      }),
                 ),
                 //Right Top
                 Padding(
@@ -272,6 +336,8 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
                     ),
                   ),
                 ),
+                //Center top clock
+                CenterClock(),
                 //Right bottom
                 Padding(
                   padding: const EdgeInsets.only(right: 8.0, bottom: 8.0),
@@ -291,20 +357,6 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
                                   children: [
                                     SizedBox(
                                       height: 40,
-                                    ),
-                                    Expanded(
-                                      child: ListView.builder(
-                                          itemCount: 10,
-                                          itemBuilder: (context, index) {
-                                            return ListTile(
-                                              title: Text(
-                                                'Tab One $index',
-                                                style: GoogleFonts.orbitron(
-                                                    fontSize: 10,
-                                                    color: AppColor.themeColor),
-                                              ),
-                                            );
-                                          }),
                                     ),
                                   ],
                                 ),
@@ -469,5 +521,33 @@ class RectanglePainter extends CustomPainter {
   @override
   bool shouldRepaint(CustomPainter oldDelegate) {
     return false;
+  }
+}
+
+class CircleButton extends StatelessWidget {
+  final GestureTapCallback onTap;
+  final IconData iconData;
+
+  const CircleButton({Key key, this.onTap, this.iconData}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    double size = 50.0;
+
+    return new InkResponse(
+      onTap: onTap,
+      child: new Container(
+        width: size,
+        height: size,
+        decoration: new BoxDecoration(
+          color: Colors.white,
+          shape: BoxShape.circle,
+        ),
+        child: new Icon(
+          iconData,
+          color: Colors.black,
+        ),
+      ),
+    );
   }
 }
