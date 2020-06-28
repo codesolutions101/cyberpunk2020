@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dialpad/flutter_dialpad.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hackathon2020/const.dart';
 
 class MyPhone extends StatefulWidget {
   @override
@@ -10,28 +8,28 @@ class MyPhone extends StatefulWidget {
 }
 
 class _MyPhoneState extends State<MyPhone> {
-
-
-  Expanded buildBtn(String text){
+  Expanded buildBtn(String text) {
     return Expanded(
       child: Container(
-        decoration: BoxDecoration(
-          color: Colors.transparent,
-          border: Border(
-            left: BorderSide(
-              color: Colors.black,
-              width: 1.0,
-            ),
-            top: BorderSide(
-              color: Colors.black,
-              width: 1.0,
+          decoration: BoxDecoration(
+            color: Colors.transparent,
+            border: Border(
+              left: BorderSide(
+                color: Colors.black,
+                width: 1.0,
+              ),
+              top: BorderSide(
+                color: Colors.black,
+                width: 1.0,
+              ),
             ),
           ),
-        ),
-
-          child: FlatButton(onPressed: null, child: Text(text,style: GoogleFonts.piedra(color: Colors.white,fontSize: 20),))
-      ),
-
+          child: FlatButton(
+              onPressed: null,
+              child: Text(
+                text,
+                style: GoogleFonts.piedra(color: Colors.white, fontSize: 20),
+              ))),
     );
   }
 
@@ -51,68 +49,68 @@ class _MyPhoneState extends State<MyPhone> {
         padding: EdgeInsets.all(10),
         child: Column(
           children: [
-            SizedBox(height: 80,),
+            SizedBox(
+              height: 80,
+            ),
             Row(
               children: [
-                buildBtn(
-                 '1'
+                buildBtn('1'),
+                SizedBox(
+                  width: 5,
                 ),
-                SizedBox(width: 5,),
-                buildBtn(
-                    '2'
+                buildBtn('2'),
+                SizedBox(
+                  width: 5,
                 ),
-                SizedBox(width: 5,),
-                buildBtn(
-                    '3'
-                ),
+                buildBtn('3'),
               ],
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Row(
               children: [
-                buildBtn(
-                    '4'
+                buildBtn('4'),
+                SizedBox(
+                  width: 5,
                 ),
-                SizedBox(width: 5,),
-                buildBtn(
-                    '5'
+                buildBtn('5'),
+                SizedBox(
+                  width: 5,
                 ),
-                SizedBox(width: 5,),
-                buildBtn(
-                    '6'
-                ),
+                buildBtn('6'),
               ],
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Row(
               children: [
-                buildBtn(
-                    '7'
+                buildBtn('7'),
+                SizedBox(
+                  width: 5,
                 ),
-                SizedBox(width: 5,),
-                buildBtn(
-                    '8'
+                buildBtn('8'),
+                SizedBox(
+                  width: 5,
                 ),
-                SizedBox(width: 5,),
-                buildBtn(
-                    '9'
-                ),
+                buildBtn('9'),
               ],
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Row(
               children: [
-                buildBtn(
-                    'esc'
+                buildBtn('esc'),
+                SizedBox(
+                  width: 5,
                 ),
-                SizedBox(width: 5,),
-                buildBtn(
-                    '0'
+                buildBtn('0'),
+                SizedBox(
+                  width: 5,
                 ),
-                SizedBox(width: 5,),
-                buildBtn(
-                    'enter'
-                ),
+                buildBtn('enter'),
               ],
             ),
           ],
