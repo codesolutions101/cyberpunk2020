@@ -34,6 +34,9 @@ dependencies:
   js:
   slide_digital_clock: ^1.0.0
   table_calendar: ^2.2.3
+  assets_audio_player: ^2.0.6+4
+  url_launcher: ^5.1.4
+  url_launcher_web: ^0.1.0
 
 dev_dependencies:
   flutter_test:
