@@ -656,6 +656,14 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
                                         SizedBox(
                                           height: 40,
                                         ),
+                                        Column(
+                                          children: [
+                                            Container(
+                                              color: Colors.transparent,
+                                              child: MyPhone(),
+                                            ),
+                                          ],
+                                        ),
                                         Container(
                                           color: Colors.transparent,
                                           child: MyPhone(),
