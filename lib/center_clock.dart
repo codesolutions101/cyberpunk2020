@@ -10,30 +10,30 @@ class CenterClock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 8.0, top: 8.0),
-      child: Align(
-        alignment: Alignment.topCenter,
-        child: SizedBox(
-          width: 350,
-          height: 100,
-          child: DigitalClock(
-            hourMinuteDigitDecoration:
-                BoxDecoration(border: Border.all(color: Colors.transparent)),
-            secondDigitDecoration:
-                BoxDecoration(border: Border.all(color: Colors.transparent)),
-            digitAnimationStyle: Curves.elasticOut,
-            is24HourTimeFormat: false,
-            areaDecoration: BoxDecoration(
-              color: Colors.transparent,
-            ),
-            hourMinuteDigitTextStyle: GoogleFonts.orbitron(
-              color: AppColor.themeColor,
-              fontSize: 70,
-            ),
-            amPmDigitTextStyle: GoogleFonts.orbitron(
-                color: AppColor.themeColor, fontWeight: FontWeight.bold),
-          ),
+    return Align(
+      alignment: Alignment.topCenter,
+      child: DigitalClock(
+        areaHeight: 100,
+        areaWidth: 350,
+        hourMinuteDigitDecoration:
+            BoxDecoration(border: Border.all(color: Colors.transparent)),
+        secondDigitDecoration:
+            BoxDecoration(border: Border.all(color: Colors.transparent)),
+        digitAnimationStyle: Curves.easeIn,
+        is24HourTimeFormat: true,
+        areaDecoration: BoxDecoration(
+          color: Colors.transparent,
+        ),
+        hourMinuteDigitTextStyle: GoogleFonts.orbitron(
+          color: AppColor.themeColor,
+          fontSize: 70,
+        ),
+        amPmDigitTextStyle: GoogleFonts.orbitron(
+            color: AppColor.themeColor, fontWeight: FontWeight.bold),
+        secondDigitTextStyle: GoogleFonts.orbitron(
+          color: AppColor.themeColor,
+          fontWeight: FontWeight.bold,
+          fontSize: 40,
         ),
       ),
     );

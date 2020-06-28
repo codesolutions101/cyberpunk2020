@@ -259,35 +259,35 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
                                 color: Colors.transparent,
                                 child: Stack(
                                   children: <Widget>[
-                                    new Positioned(
-                                      child: new CircleButton(
+                                    Positioned(
+                                      child: CircleButton(
                                           onTap: () => print("Cool"),
                                           iconData: Icons.favorite_border),
                                       top: 10.0,
                                       left: 130.0,
                                     ),
-                                    new Positioned(
-                                      child: new CircleButton(
+                                    Positioned(
+                                      child: CircleButton(
                                           onTap: () => print("Cool"),
                                           iconData: Icons.timer),
                                       top: 120.0,
                                       left: 10.0,
                                     ),
-                                    new Positioned(
-                                      child: new CircleButton(
+                                    Positioned(
+                                      child: CircleButton(
                                           onTap: () => print("Cool"),
                                           iconData: Icons.place),
                                       top: 120.0,
                                       right: 10.0,
                                     ),
-                                    new Positioned(
-                                      child: new CircleButton(
+                                    Positioned(
+                                      child: CircleButton(
                                           onTap: () => print("Cool"),
                                           iconData: Icons.local_pizza),
                                       top: 240.0,
                                       left: 130.0,
                                     ),
-                                    new Positioned(
+                                    Positioned(
                                       child: new CircleButton(
                                           onTap: _close,
                                           iconData:
