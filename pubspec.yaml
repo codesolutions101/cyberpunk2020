@@ -34,6 +34,8 @@ dependencies:
   js:
   slide_digital_clock: ^1.0.0
   table_calendar: ^2.2.3
+  flutter_dialpad: ^1.0.0
+
 
 dev_dependencies:
   flutter_test:
