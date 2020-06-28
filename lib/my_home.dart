@@ -120,348 +120,365 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               //Left Icons
-              SingleChildScrollView(
-                child: Container(
-                  alignment: Alignment.center,
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                        left: 50.0, right: 10, top: 10, bottom: 10),
-                    child: Column(
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            controller1.reverse(
-                                from: controller1.value == 0.0
-                                    ? 1.0
-                                    : controller1.value);
-                          },
-                          child: SizedBox(
-                            width: 150,
-                            height: 150,
-                            child: CustomPaint(
-                              painter: CustomCirclePainter(
-                                animation: controller1,
-                                backgroundColor: Colors.white,
-                                color: AppColor.themeColor,
-                              ),
-                              child: Icon(
-                                Icons.laptop,
-                                color: AppColor.themeColor,
-                                size: 100,
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            controller2.reverse(
-                                from: controller2.value == 0.0
-                                    ? 1.0
-                                    : controller2.value);
-                          },
-                          child: SizedBox(
-                            width: 150,
-                            height: 150,
-                            child: CustomPaint(
-                              painter: CustomCirclePainter(
-                                animation: controller2,
-                                backgroundColor: Colors.white,
-                                color: AppColor.themeColor,
-                              ),
-                              child: Icon(
-                                FontAwesomeIcons.globe,
-                                color: AppColor.themeColor,
-                                size: 100,
+              Flexible(
+                child: SingleChildScrollView(
+                  child: Container(
+//                    color: Colors.red,
+                    width: MediaQuery.of(context).size.width * 0.2,
+                    alignment: Alignment.center,
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          left: 50.0, right: 10, top: 10, bottom: 10),
+                      child: Column(
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              controller1.reverse(
+                                  from: controller1.value == 0.0
+                                      ? 1.0
+                                      : controller1.value);
+                            },
+                            child: SizedBox(
+                              width: 150,
+                              height: 150,
+                              child: CustomPaint(
+                                painter: CustomCirclePainter(
+                                  animation: controller1,
+                                  backgroundColor: Colors.black,
+                                  color: AppColor.themeColor,
+                                ),
+                                child: Icon(
+                                  Icons.laptop,
+                                  color: AppColor.themeColor,
+                                  size: 100,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            controller3.reverse(
-                                from: controller3.value == 0.0
-                                    ? 1.0
-                                    : controller3.value);
-                          },
-                          child: SizedBox(
-                            width: 150,
-                            height: 150,
-                            child: CustomPaint(
-                              painter: CustomCirclePainter(
-                                animation: controller3,
-                                backgroundColor: Colors.white,
-                                color: AppColor.themeColor,
-                              ),
-                              child: Icon(
-                                Icons.map,
-                                color: AppColor.themeColor,
-                                size: 100,
+                          SizedBox(
+                            height: 20,
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              controller2.reverse(
+                                  from: controller2.value == 0.0
+                                      ? 1.0
+                                      : controller2.value);
+                            },
+                            child: SizedBox(
+                              width: 150,
+                              height: 150,
+                              child: CustomPaint(
+                                painter: CustomCirclePainter(
+                                  animation: controller2,
+                                  backgroundColor: Colors.black,
+                                  color: AppColor.themeColor,
+                                ),
+                                child: Icon(
+                                  FontAwesomeIcons.globe,
+                                  color: AppColor.themeColor,
+                                  size: 100,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            controller4.reverse(
-                                from: controller4.value == 0.0
-                                    ? 1.0
-                                    : controller4.value);
-                          },
-                          child: SizedBox(
-                            width: 150,
-                            height: 150,
-                            child: CustomPaint(
-                              painter: CustomCirclePainter(
-                                animation: controller4,
-                                backgroundColor: Colors.white,
-                                color: AppColor.themeColor,
-                              ),
-                              child: Icon(
-                                FontAwesomeIcons.music,
-                                color: AppColor.themeColor,
-                                size: 100,
+                          SizedBox(
+                            height: 20,
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              controller3.reverse(
+                                  from: controller3.value == 0.0
+                                      ? 1.0
+                                      : controller3.value);
+                            },
+                            child: SizedBox(
+                              width: 150,
+                              height: 150,
+                              child: CustomPaint(
+                                painter: CustomCirclePainter(
+                                  animation: controller3,
+                                  backgroundColor: Colors.black,
+                                  color: AppColor.themeColor,
+                                ),
+                                child: Icon(
+                                  Icons.map,
+                                  color: AppColor.themeColor,
+                                  size: 100,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                          SizedBox(
+                            height: 20,
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              controller4.reverse(
+                                  from: controller4.value == 0.0
+                                      ? 1.0
+                                      : controller4.value);
+                            },
+                            child: SizedBox(
+                              width: 150,
+                              height: 150,
+                              child: CustomPaint(
+                                painter: CustomCirclePainter(
+                                  animation: controller4,
+                                  backgroundColor: Colors.black,
+                                  color: AppColor.themeColor,
+                                ),
+                                child: Icon(
+                                  FontAwesomeIcons.music,
+                                  color: AppColor.themeColor,
+                                  size: 100,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
               //Middle
-              Container(
-                alignment: Alignment.center,
-                height: MediaQuery.of(context).size.height,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    CenterClock(),
-                    SizedBox(
-                      height: 100,
-                    ),
-                    Expanded(
-                      child: AnimatedBuilder(
-                          animation: animationController,
-                          builder: (context, builder) {
-                            return Stack(
-                              alignment: Alignment.center,
-                              children: [
-                                Transform.scale(
-                                  scale: scale.value - 1.5,
-                                  // subtract the beginning value to run the opposite animation
-                                  child: Container(
-                                    width: 300,
-                                    height: 300,
-                                    color: Colors.transparent,
-                                    child: Stack(
-                                      children: <Widget>[
-                                        Positioned(
-                                          child: CircleButton(
-                                              onTap: () => print("Cool"),
-                                              iconData: Icons.favorite_border),
-                                          top: 10.0,
-                                          left: 130.0,
+              Flexible(
+                child: Container(
+//                  color: Colors.blue,
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Positioned(
+                        child: Container(
+                          alignment: Alignment.center,
+                          child: AnimatedBuilder(
+                              animation: animationController,
+                              builder: (context, builder) {
+                                return Stack(
+                                  alignment: Alignment.center,
+                                  children: [
+                                    Transform.scale(
+                                      scale: scale.value - 1.5,
+                                      // subtract the beginning value to run the opposite animation
+                                      child: Container(
+                                        width: 300,
+                                        height: 300,
+                                        color: Colors.transparent,
+                                        child: Stack(
+                                          children: <Widget>[
+                                            Positioned(
+                                              child: CircleButton(
+                                                  onTap: () => print("Cool"),
+                                                  iconData:
+                                                      Icons.favorite_border),
+                                              top: 10.0,
+                                              left: 130.0,
+                                            ),
+                                            Positioned(
+                                              child: CircleButton(
+                                                  onTap: () => print("Cool"),
+                                                  iconData: Icons.timer),
+                                              top: 120.0,
+                                              left: 10.0,
+                                            ),
+                                            Positioned(
+                                              child: CircleButton(
+                                                  onTap: () => print("Cool"),
+                                                  iconData: Icons.place),
+                                              top: 120.0,
+                                              right: 10.0,
+                                            ),
+                                            Positioned(
+                                              child: CircleButton(
+                                                  onTap: () => print("Cool"),
+                                                  iconData: Icons.local_pizza),
+                                              top: 240.0,
+                                              left: 130.0,
+                                            ),
+                                            Positioned(
+                                              child: new CircleButton(
+                                                  onTap: _close,
+                                                  iconData: FontAwesomeIcons
+                                                      .timesCircle),
+                                              top: 120.0,
+                                              left: 130.0,
+                                            ),
+                                          ],
                                         ),
-                                        Positioned(
-                                          child: CircleButton(
-                                              onTap: () => print("Cool"),
-                                              iconData: Icons.timer),
-                                          top: 120.0,
-                                          left: 10.0,
-                                        ),
-                                        Positioned(
-                                          child: CircleButton(
-                                              onTap: () => print("Cool"),
-                                              iconData: Icons.place),
-                                          top: 120.0,
-                                          right: 10.0,
-                                        ),
-                                        Positioned(
-                                          child: CircleButton(
-                                              onTap: () => print("Cool"),
-                                              iconData: Icons.local_pizza),
-                                          top: 240.0,
-                                          left: 130.0,
-                                        ),
-                                        Positioned(
-                                          child: new CircleButton(
-                                              onTap: _close,
-                                              iconData:
-                                                  FontAwesomeIcons.timesCircle),
-                                          top: 120.0,
-                                          left: 130.0,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Transform.scale(
-                                  scale: scale.value,
-                                  child: Container(
-                                    child: GestureDetector(
-                                      onTap: _open,
-                                      child: Image.asset(
-                                        'assets/images/middle.jpg',
-                                        scale: 2.0,
                                       ),
                                     ),
-                                  ),
-                                )
-                              ],
-                            );
-                          }),
-                    ),
-                  ],
+                                    Transform.scale(
+                                      scale: scale.value,
+                                      child: Container(
+                                        child: GestureDetector(
+                                          onTap: _open,
+                                          child: Image.asset(
+                                            'assets/images/middle.jpg',
+                                            scale: 2.0,
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                );
+                              }),
+                        ),
+                      ),
+                      Positioned(
+                        top: 50,
+                        child: CenterClock(),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-              Container(
-                height: MediaQuery.of(context).size.height,
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 8.0, top: 8.0),
-                        child: Align(
-                          alignment: Alignment.topRight,
-                          child: SizedBox(
-                            width: 300,
-                            height: 250,
-                            child: CustomPaint(
-                              painter: RectanglePainter(),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: ListView.separated(
-                                  itemCount: _data.length,
-                                  itemBuilder: (context, index) {
-                                    return Text(
-                                      _data[index].toString(),
-                                      style: GoogleFonts.orbitron(
-                                          color: AppColor.themeColor),
-                                    );
-                                  },
-                                  separatorBuilder: (context, index) {
-                                    return Divider();
-                                  },
+              //Right
+              Flexible(
+                child: Container(
+//                  color: Colors.greenAccent,
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 8.0, top: 8.0),
+                          child: Align(
+                            alignment: Alignment.topRight,
+                            child: SizedBox(
+                              width: 300,
+                              height: 250,
+                              child: CustomPaint(
+                                painter: RectanglePainter(),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: ListView.separated(
+                                    itemCount: _data.length,
+                                    itemBuilder: (context, index) {
+                                      return Text(
+                                        _data[index].toString(),
+                                        style: GoogleFonts.orbitron(
+                                            color: AppColor.themeColor),
+                                      );
+                                    },
+                                    separatorBuilder: (context, index) {
+                                      return Divider();
+                                    },
+                                  ),
                                 ),
                               ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 8.0, bottom: 8.0),
-                        child: Align(
-                          alignment: Alignment.bottomRight,
-                          child: SizedBox(
-                            width: 300,
-                            height: 425,
-                            child: CustomPaint(
-                              painter: RectanglePainter(),
-                              child: Stack(
-                                children: [
-                                  TabBarView(
-                                    controller: tabController,
-                                    children: [
-                                      Column(
-                                        children: [
-                                          SizedBox(
-                                            height: 40,
-                                          ),
-                                          Container(
-                                            color: Colors.transparent,
-                                            child: MyPhone(),
-                                          ),
-                                        ],
-                                      ),
-                                      SingleChildScrollView(
-                                        child: Column(
+                      Expanded(
+                        child: Padding(
+                          padding:
+                              const EdgeInsets.only(right: 8.0, bottom: 8.0),
+                          child: Align(
+                            alignment: Alignment.bottomRight,
+                            child: SizedBox(
+                              width: 300,
+                              height: 425,
+                              child: CustomPaint(
+                                painter: RectanglePainter(),
+                                child: Stack(
+                                  children: [
+                                    TabBarView(
+                                      controller: tabController,
+                                      children: [
+                                        Column(
                                           children: [
                                             SizedBox(
                                               height: 40,
                                             ),
                                             Container(
                                               color: Colors.transparent,
-                                              child: MyCalendar(),
+                                              child: MyPhone(),
                                             ),
                                           ],
                                         ),
-                                      ),
-                                      Column(
-                                        children: [
-                                          SizedBox(
-                                            height: 40,
+                                        SingleChildScrollView(
+                                          child: Column(
+                                            children: [
+                                              SizedBox(
+                                                height: 40,
+                                              ),
+                                              Container(
+                                                color: Colors.transparent,
+                                                child: MyCalendar(),
+                                              ),
+                                            ],
                                           ),
-                                          Expanded(
-                                            child: ListView.builder(
-                                                itemCount: 10,
-                                                itemBuilder: (context, index) {
-                                                  return ListTile(
-                                                    title: Text(
-                                                      'Tab Three $index',
-                                                      style:
-                                                          GoogleFonts.orbitron(
-                                                              fontSize: 10,
-                                                              color: AppColor
-                                                                  .themeColor),
-                                                    ),
-                                                  );
-                                                }),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Container(
-                                      height: 40,
-                                      child: AppBar(
-                                        backgroundColor: Colors.black,
-                                        flexibleSpace: TabBar(
-                                          controller: tabController,
-                                          isScrollable: false,
-                                          indicatorColor: AppColor.themeColor,
-                                          indicatorSize:
-                                              TabBarIndicatorSize.label,
-                                          indicatorWeight: 2,
-                                          tabs: [
-                                            Icon(
-                                              Icons.phone,
-                                              color: AppColor.themeColor,
+                                        ),
+                                        Column(
+                                          children: [
+                                            SizedBox(
+                                              height: 40,
                                             ),
-                                            Icon(
-                                              FontAwesomeIcons.calendarAlt,
-                                              color: AppColor.themeColor,
-                                            ),
-                                            Icon(
-                                              FontAwesomeIcons.stickyNote,
-                                              color: AppColor.themeColor,
+                                            Expanded(
+                                              child: ListView.builder(
+                                                  itemCount: 10,
+                                                  itemBuilder:
+                                                      (context, index) {
+                                                    return ListTile(
+                                                      title: Text(
+                                                        'Tab Three $index',
+                                                        style: GoogleFonts
+                                                            .orbitron(
+                                                                fontSize: 10,
+                                                                color: AppColor
+                                                                    .themeColor),
+                                                      ),
+                                                    );
+                                                  }),
                                             ),
                                           ],
+                                        ),
+                                      ],
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Container(
+                                        height: 40,
+                                        child: AppBar(
+                                          backgroundColor: Colors.black,
+                                          flexibleSpace: TabBar(
+                                            controller: tabController,
+                                            isScrollable: false,
+                                            indicatorColor: AppColor.themeColor,
+                                            indicatorSize:
+                                                TabBarIndicatorSize.label,
+                                            indicatorWeight: 2,
+                                            tabs: [
+                                              Icon(
+                                                Icons.phone,
+                                                color: AppColor.themeColor,
+                                              ),
+                                              Icon(
+                                                FontAwesomeIcons.calendarAlt,
+                                                color: AppColor.themeColor,
+                                              ),
+                                              Icon(
+                                                FontAwesomeIcons.stickyNote,
+                                                color: AppColor.themeColor,
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               )
             ],
