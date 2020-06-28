@@ -10,31 +10,28 @@ class CenterClock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.topCenter,
-      child: DigitalClock(
-        areaHeight: 100,
-        areaWidth: 350,
-        hourMinuteDigitDecoration:
-            BoxDecoration(border: Border.all(color: Colors.transparent)),
-        secondDigitDecoration:
-            BoxDecoration(border: Border.all(color: Colors.transparent)),
-        digitAnimationStyle: Curves.easeIn,
-        is24HourTimeFormat: true,
-        areaDecoration: BoxDecoration(
-          color: Colors.transparent,
-        ),
-        hourMinuteDigitTextStyle: GoogleFonts.orbitron(
-          color: AppColor.themeColor,
-          fontSize: 70,
-        ),
-        amPmDigitTextStyle: GoogleFonts.orbitron(
-            color: AppColor.themeColor, fontWeight: FontWeight.bold),
-        secondDigitTextStyle: GoogleFonts.orbitron(
-          color: AppColor.themeColor,
-          fontWeight: FontWeight.bold,
-          fontSize: 40,
-        ),
+    return DigitalClock(
+      areaHeight: 100,
+      areaWidth: 350,
+      hourMinuteDigitDecoration:
+          BoxDecoration(border: Border.all(color: Colors.transparent)),
+      secondDigitDecoration:
+          BoxDecoration(border: Border.all(color: Colors.transparent)),
+      digitAnimationStyle: Curves.easeIn,
+      is24HourTimeFormat: true,
+      areaDecoration: BoxDecoration(
+        color: Colors.transparent,
+      ),
+      hourMinuteDigitTextStyle: GoogleFonts.orbitron(
+        color: AppColor.themeColor,
+        fontSize: 70,
+      ),
+      amPmDigitTextStyle: GoogleFonts.orbitron(
+          color: AppColor.themeColor, fontWeight: FontWeight.bold),
+      secondDigitTextStyle: GoogleFonts.orbitron(
+        color: AppColor.themeColor,
+        fontWeight: FontWeight.bold,
+        fontSize: 40,
       ),
     );
   }
