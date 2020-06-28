@@ -90,27 +90,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_dialpad:
-    dependency: "direct main"
-    description:
-      name: flutter_dialpad
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0"
-  flutter_dtmf:
-    dependency: transitive
-    description:
-      name: flutter_dtmf
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.0.3"
-  flutter_masked_text:
-    dependency: transitive
-    description:
-      name: flutter_masked_text
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.8.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -294,6 +273,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.9.3"
+  stop_watch_timer:
+    dependency: "direct main"
+    description:
+      name: stop_watch_timer
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.0"
   stream_channel:
     dependency: transitive
     description:

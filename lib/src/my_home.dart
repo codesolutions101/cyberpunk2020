@@ -5,16 +5,19 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hackathon2020/const.dart';
-import 'package:hackathon2020/my_calendar.dart';
+import 'package:hackathon2020/src/helpers/utils/const.dart';
+import 'package:hackathon2020/src/my_calendar.dart';
 import 'package:js/js.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:weather/weather_library.dart';
 
 import 'center_clock.dart';
-import 'locationJs.dart';
+import 'helpers/common_widget/circle_button.dart';
+import 'helpers/common_widget/my_custom_painters.dart';
+import 'helpers/locationJs.dart';
 import 'my_notes.dart';
 import 'my_phone.dart';
+import 'my_stopwatch.dart';
 
 class MyHome extends StatefulWidget {
   @override
@@ -26,9 +29,9 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
   AnimationController controller1;
   AnimationController controller2;
   AnimationController controller3;
-  AnimationController controller4;
   TabController tabController;
   AnimationController animationController;
+
 //  AnimationController animationController2;
 //  Animation<double> rotateAnimation;
   AnimationController animatedIconController;
@@ -80,10 +83,7 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
           });
         }
       });
-    controller4 = AnimationController(
-      vsync: this,
-      duration: Duration(seconds: 1),
-    );
+
     tabController = TabController(length: 3, vsync: this);
 
     animationController =
@@ -295,33 +295,6 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
                           ),
                         ),
                       ),
-                      SizedBox(
-                        height: 30,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          controller4.reverse(
-                              from: controller4.value == 0.0
-                                  ? 1.0
-                                  : controller4.value);
-                        },
-                        child: SizedBox(
-                          width: 100,
-                          height: 100,
-                          child: CustomPaint(
-                            painter: CustomCirclePainter(
-                              animation: controller4,
-                              backgroundColor: Colors.black,
-                              color: AppColor.themeColor,
-                            ),
-                            child: Icon(
-                              FontAwesomeIcons.music,
-                              color: AppColor.themeColor,
-                              size: 50,
-                            ),
-                          ),
-                        ),
-                      ),
                     ],
                   ),
                 ),
@@ -331,92 +304,107 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
           //Middle
           Flexible(
             child: Container(
-//                  color: Colors.blue,
-              width: MediaQuery.of(context).size.width * 0.4,
               child: Stack(
                 alignment: Alignment.center,
                 children: [
                   Positioned(
+                    left: 160,
                     child: Container(
                       alignment: Alignment.center,
-                      child: AnimatedBuilder(
-                          animation: animationController,
-                          builder: (context, builder) {
-                            return Stack(
-                              alignment: Alignment.center,
-                              children: [
-                                Transform.scale(
-                                  scale: scale.value - 1.5,
-                                  // subtract the beginning value to run the opposite animation
-                                  child: Transform.rotate(
-                                    angle: math.pi,
-                                    child: Container(
-                                      width: 300,
-                                      height: 300,
-                                      color: Colors.transparent,
-                                      child: Stack(
-                                        children: <Widget>[
-                                          Positioned(
-                                            child: CircleButton(
-                                                onTap: () => print("Cool"),
+                      child: InkWell(
+                        onTap: () {
+                          showGeneralDialog(
+                              context: context,
+                              // ignore: missing_return
+                              pageBuilder: (context, anim1, anim2) {},
+                              barrierDismissible: true,
+                              barrierColor: Colors.black.withOpacity(0.5),
+                              barrierLabel: '',
+                              transitionDuration: Duration(milliseconds: 1000),
+                              transitionBuilder:
+                                  (context, anim1, anim2, child) {
+                                return RotationTransition(
+                                  turns: anim1,
+                                  alignment: Alignment.center,
+                                  child: Theme(
+                                    data: Theme.of(context).copyWith(
+                                        dialogBackgroundColor: Colors.black),
+                                    child: AlertDialog(
+                                      contentPadding: EdgeInsets.all(0),
+                                      content: Container(
+                                        height: 410,
+                                        width: 410,
+                                        alignment: Alignment.center,
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: <Widget>[
+                                            CircleButton(
+                                                onTap: () => Navigator.of(
+                                                        context)
+                                                    .pushReplacement(
+                                                        MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                MyStopWatch())),
                                                 iconData:
                                                     Icons.favorite_border),
-                                            top: 10.0,
-                                            left: 130.0,
-                                          ),
-                                          Positioned(
-                                            child: CircleButton(
-                                                onTap: () => print("Cool"),
-                                                iconData: Icons.timer),
-                                            top: 120.0,
-                                            left: 10.0,
-                                          ),
-                                          Positioned(
-                                            child: CircleButton(
-                                                onTap: () => print("Cool"),
-                                                iconData: Icons.place),
-                                            top: 120.0,
-                                            right: 10.0,
-                                          ),
-                                          Positioned(
-                                            child: CircleButton(
-                                                onTap: () => print("Cool"),
+                                            Center(
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceEvenly,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  CircleButton(
+                                                      onTap: () {
+                                                        Navigator.of(context)
+                                                            .pop();
+                                                        Navigator.of(context)
+                                                            .push(
+                                                          MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                MyStopWatch(),
+                                                          ),
+                                                        );
+                                                      },
+                                                      iconData: Icons.timer),
+                                                  CircleButton(
+                                                      onTap: () {
+                                                        Navigator.of(context)
+                                                            .pop();
+                                                      },
+                                                      iconData: FontAwesomeIcons
+                                                          .timesCircle),
+                                                  CircleButton(
+                                                      onTap: launchMap,
+                                                      iconData: Icons.place),
+                                                ],
+                                              ),
+                                            ),
+                                            CircleButton(
+                                                onTap: () => null,
                                                 iconData: Icons.local_pizza),
-                                            top: 240.0,
-                                            left: 130.0,
-                                          ),
-                                          Positioned(
-                                            child: new CircleButton(
-                                                onTap: _close,
-                                                iconData: FontAwesomeIcons
-                                                    .timesCircle),
-                                            top: 120.0,
-                                            left: 130.0,
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                                Transform.scale(
-                                  scale: scale.value,
-                                  child: Container(
-                                    child: GestureDetector(
-                                      onTap: _open,
-                                      child: Image.asset(
-                                        'assets/images/middle.jpg',
-                                        scale: 2.0,
-                                      ),
-                                    ),
-                                  ),
-                                )
-                              ],
-                            );
-                          }),
+                                );
+                              });
+                        },
+                        child: Image.asset(
+                          'assets/images/middle.jpg',
+                          scale: 1.2,
+                        ),
+                      ),
                     ),
                   ),
                   Positioned(
                     top: 50,
+                    left: 180,
                     child: CenterClock(),
                   ),
                 ],
@@ -426,10 +414,8 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
           //Right
           Flexible(
             child: Container(
-//                  color: Colors.greenAccent,
-//                  alignment: Alignment.center,
               height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width * 0.4,
+              width: MediaQuery.of(context).size.width * 0.3,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -473,47 +459,37 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
                                                 text: TextSpan(
                                                   children: <TextSpan>[
                                                     TextSpan(
-                                                        style: TextStyle(
-                                                            fontSize: 24,
-                                                            color:
-                                                                Colors.black),
-                                                        children: <TextSpan>[
-                                                          TextSpan(
-                                                            text: tempCel
-                                                                .toString(),
-                                                            style: GoogleFonts
-                                                                .orbitron(
-                                                                    color: AppColor
-                                                                        .themeColor,
-                                                                    fontSize:
-                                                                        30),
-                                                          ),
-                                                          TextSpan(
-                                                            text: 'º',
-                                                            style: GoogleFonts
-                                                                .orbitron(
-                                                                    color: AppColor
-                                                                        .themeColor,
-                                                                    fontSize:
-                                                                        30),
-                                                          ),
-                                                          TextSpan(
-                                                            text: 'C',
-                                                            style: GoogleFonts
-                                                                .orbitron(
-                                                                    color: AppColor
-                                                                        .themeColor,
-                                                                    fontSize:
-                                                                        30),
-                                                          ),
-                                                        ]),
-//                                          Text(
-//                                            tempCel.toString(),
-//                                            textAlign: TextAlign.center,
-//                                            style: GoogleFonts.orbitron(
-//                                                color: AppColor.themeColor,
-//                                                fontSize: 30),
-//                                          ),
+                                                      style: TextStyle(
+                                                          fontSize: 24,
+                                                          color: Colors.black),
+                                                      children: <TextSpan>[
+                                                        TextSpan(
+                                                          text: tempCel
+                                                              .toString(),
+                                                          style: GoogleFonts
+                                                              .orbitron(
+                                                                  color: AppColor
+                                                                      .themeColor,
+                                                                  fontSize: 30),
+                                                        ),
+                                                        TextSpan(
+                                                          text: 'º',
+                                                          style: GoogleFonts
+                                                              .orbitron(
+                                                                  color: AppColor
+                                                                      .themeColor,
+                                                                  fontSize: 30),
+                                                        ),
+                                                        TextSpan(
+                                                          text: 'C',
+                                                          style: GoogleFonts
+                                                              .orbitron(
+                                                                  color: AppColor
+                                                                      .themeColor,
+                                                                  fontSize: 30),
+                                                        ),
+                                                      ],
+                                                    ),
                                                   ],
                                                 ),
                                               ),
@@ -563,38 +539,7 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
                       },
                     ),
                   ),
-//                      Expanded(
-//                        child: Padding(
-//                          padding: const EdgeInsets.only(right: 8.0, top: 8.0),
-//                          child: Align(
-//                            alignment: Alignment.topRight,
-//                            child: SizedBox(
-//                              width: 300,
-//                              height: 250,
-//                              child: CustomPaint(
-//                                painter: RectanglePainter(),
-//                                child: Padding(
-//                                  padding: const EdgeInsets.all(8.0),
-//                                  child: ListView.separated(
-//                                    itemCount: _data.length,
-//                                    itemBuilder: (context, index) {
-//                                      return Text(
-//                                        _data[index].toString(),
-//                                        style: GoogleFonts.orbitron(
-//                                            color: AppColor.themeColor),
-//                                      );
-//                                    },
-//                                    separatorBuilder: (context, index) {
-//                                      return Divider();
-//                                    },
-//                                  ),
-//                                ),
-//                              ),
-//                            ),
-//                          ),
-//                        ),
-//                      ),
-                  Expanded(
+                  Flexible(
                     child: Padding(
                       padding: const EdgeInsets.only(right: 8.0, top: 8.0),
                       child: Align(
@@ -636,7 +581,7 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
                       ),
                     ),
                   ),
-                  Expanded(
+                  Flexible(
                     child: Padding(
                       padding: const EdgeInsets.only(right: 8.0, bottom: 8.0),
                       child: Align(
@@ -651,30 +596,11 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
                                 TabBarView(
                                   controller: tabController,
                                   children: [
-                                    Column(
-                                      children: [
-                                        SizedBox(
-                                          height: 40,
-                                        ),
-                                        Column(
-                                          children: [
-                                            Container(
-                                              color: Colors.transparent,
-                                              child: MyPhone(),
-                                            ),
-                                          ],
-                                        ),
-                                        Container(
-                                          color: Colors.transparent,
-                                          child: MyPhone(),
-                                        ),
-                                      ],
-                                    ),
                                     SingleChildScrollView(
                                       child: Column(
                                         children: [
                                           SizedBox(
-                                            height: 40,
+                                            height: 25,
                                           ),
                                           Container(
                                             color: Colors.transparent,
@@ -682,6 +608,17 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
                                           ),
                                         ],
                                       ),
+                                    ),
+                                    Column(
+                                      children: [
+                                        SizedBox(
+                                          height: 40,
+                                        ),
+                                        Container(
+                                          color: Colors.transparent,
+                                          child: MyPhone(),
+                                        ),
+                                      ],
                                     ),
                                     MyNotes(),
                                   ],
@@ -701,11 +638,11 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
                                         indicatorWeight: 2,
                                         tabs: [
                                           Icon(
-                                            Icons.phone,
+                                            FontAwesomeIcons.calendarAlt,
                                             color: AppColor.themeColor,
                                           ),
                                           Icon(
-                                            FontAwesomeIcons.calendarAlt,
+                                            Icons.phone,
                                             color: AppColor.themeColor,
                                           ),
                                           Icon(
@@ -729,115 +666,6 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
             ),
           )
         ],
-      ),
-    );
-  }
-}
-
-/// Draws a circle if placed into a square widget.
-class CirclePainter extends CustomPainter {
-  final _paint = Paint()
-    ..color = AppColor.themeColor
-    ..strokeWidth = 10
-    // Use [PaintingStyle.fill] if you want the circle to be filled.
-    ..style = PaintingStyle.stroke;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    canvas.drawOval(
-      Rect.fromLTWH(0, 0, size.width, size.height),
-      _paint,
-    );
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) {
-    return false;
-  }
-}
-
-class CustomCirclePainter extends CustomPainter {
-  CustomCirclePainter({
-    this.animation,
-    this.backgroundColor,
-    this.color,
-  }) : super(repaint: animation);
-
-  final Animation<double> animation;
-  final Color backgroundColor, color;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    Paint paint = Paint()
-      ..color = backgroundColor
-      ..strokeWidth = 5.0
-      ..strokeCap = StrokeCap.butt
-      ..style = PaintingStyle.stroke;
-
-    canvas.drawCircle(size.center(Offset.zero), size.width / 2.0, paint);
-    paint.color = color;
-    double progress = (1.0 - animation.value) * 2 * math.pi;
-    canvas.drawArc(Offset.zero & size, math.pi * 1.5, -progress, false, paint);
-  }
-
-  @override
-  bool shouldRepaint(CustomCirclePainter old) {
-    return animation.value != old.animation.value ||
-        color != old.color ||
-        backgroundColor != old.backgroundColor;
-  }
-}
-
-class RectanglePainter extends CustomPainter {
-  final _paint = Paint()
-    ..color = AppColor.themeColor
-    ..strokeWidth = 4
-    // Use [PaintingStyle.fill] if you want the circle to be filled.
-    ..style = PaintingStyle.stroke;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    canvas.drawRRect(
-        RRect.fromRectAndRadius(Rect.fromLTWH(0, 0, size.width, size.height),
-            Radius.circular(10.0)),
-        _paint);
-//    canvas.drawDRRect(
-//      RRect.fromRectAndCorners(Rect.fromLTWH(0, 0, size.width, size.height),
-//          topLeft: Radius.circular(50)),
-//      RRect.fromRectAndCorners(Rect.fromLTWH(10, 10, size.width, size.height),
-//          topLeft: Radius.circular(1)),
-//      _paint,
-//    );
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) {
-    return false;
-  }
-}
-
-class CircleButton extends StatelessWidget {
-  final GestureTapCallback onTap;
-  final IconData iconData;
-
-  const CircleButton({Key key, this.onTap, this.iconData}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    double size = 50.0;
-    return new InkResponse(
-      onTap: onTap,
-      child: new Container(
-        width: size,
-        height: size,
-        decoration: new BoxDecoration(
-          color: Colors.transparent,
-          shape: BoxShape.circle,
-        ),
-        child: new Icon(
-          iconData,
-          color: AppColor.themeColor,
-        ),
       ),
     );
   }

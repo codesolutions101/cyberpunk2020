@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hackathon2020/const.dart';
+import 'package:hackathon2020/src/helpers/utils/const.dart';
 
 class MyNotes extends StatelessWidget {
   const MyNotes({

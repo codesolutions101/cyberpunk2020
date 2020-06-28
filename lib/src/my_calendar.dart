@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hackathon2020/const.dart';
+import 'package:hackathon2020/src/helpers/utils/const.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 // Example holidays
