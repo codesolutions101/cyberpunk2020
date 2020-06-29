@@ -192,6 +192,19 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
   }
 
   @override
+  void dispose() {
+    controller.dispose();
+    controller1.dispose();
+    controller2.dispose();
+    controller3.dispose();
+    tabController.dispose();
+    animationController.dispose();
+    animatedIconController.dispose();
+    weatherAnim.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     User user = Provider.of<User>(context);
     return Scaffold(
@@ -392,14 +405,14 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
                                             CircleButton(
                                                 onTap: () async {
                                                   final url =
-                                                      'https://www.google.com/maps/search/?api=1&query=pizza';
+                                                      'https://www.youtube.com/watch?v=Q9yn1DpZkHQ&list=RDQMWA2PUmwF9Uw&start_radio=1';
                                                   if (await canLaunch(url)) {
                                                     await launch(url);
                                                   } else {
                                                     throw 'Could not launch $url';
                                                   }
                                                 },
-                                                iconData: Icons.local_pizza),
+                                                iconData: Icons.music_note),
                                           ],
                                         ),
                                       ),
