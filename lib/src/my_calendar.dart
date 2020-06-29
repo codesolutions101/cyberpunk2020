@@ -18,7 +18,7 @@ class MyCalendar extends StatefulWidget {
 }
 
 class _MyCalendarState extends State<MyCalendar> with TickerProviderStateMixin {
-  List _selectedEvents;
+  List selectedEvents;
   AnimationController _animationController;
   CalendarController _calendarController;
   int currentTab = 0;
@@ -26,7 +26,7 @@ class _MyCalendarState extends State<MyCalendar> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    final _selectedDay = DateTime.now();
+//    final _selectedDay = DateTime.now();
 
     _calendarController = CalendarController();
 
@@ -48,7 +48,7 @@ class _MyCalendarState extends State<MyCalendar> with TickerProviderStateMixin {
   void _onDaySelected(DateTime day, List events) {
     print('CALLBACK: _onDaySelected');
     setState(() {
-      _selectedEvents = events;
+      selectedEvents = events;
     });
   }
 
@@ -84,25 +84,25 @@ class _MyCalendarState extends State<MyCalendar> with TickerProviderStateMixin {
       },
       calendarStyle: CalendarStyle(
         outsideDaysVisible: false,
-        weekendStyle: GoogleFonts.orbitron(color: AppColor.themeColor),
+        weekendStyle: GoogleFonts.orbitron(color: AppColor.kPurple),
         renderDaysOfWeek: true,
-        holidayStyle: GoogleFonts.orbitron(color: AppColor.themeColor),
-        outsideHolidayStyle: GoogleFonts.orbitron(color: AppColor.themeColor),
-        outsideStyle: GoogleFonts.orbitron(color: AppColor.themeColor),
-        outsideWeekendStyle: GoogleFonts.orbitron(color: AppColor.themeColor),
-        todayStyle: GoogleFonts.orbitron(color: AppColor.themeColor),
+        holidayStyle: GoogleFonts.orbitron(color: AppColor.kPurple),
+        outsideHolidayStyle: GoogleFonts.orbitron(color: AppColor.kPurple),
+        outsideStyle: GoogleFonts.orbitron(color: AppColor.kPurple),
+        outsideWeekendStyle: GoogleFonts.orbitron(color: AppColor.kPurple),
+        todayStyle: GoogleFonts.orbitron(color: AppColor.kPurple),
         weekdayStyle: GoogleFonts.orbitron(color: Color(0xffabd0d1)),
-        selectedStyle: GoogleFonts.orbitron(color: AppColor.themeColor),
-        unavailableStyle: GoogleFonts.orbitron(color: AppColor.themeColor),
+        selectedStyle: GoogleFonts.orbitron(color: AppColor.kPurple),
+        unavailableStyle: GoogleFonts.orbitron(color: AppColor.kPurple),
       ),
       daysOfWeekStyle: DaysOfWeekStyle(
-        weekendStyle: GoogleFonts.orbitron(color: AppColor.themeColor),
+        weekendStyle: GoogleFonts.orbitron(color: AppColor.kPurple),
         weekdayStyle: GoogleFonts.orbitron(color: Color(0xffabd0d1)),
       ),
       headerStyle: HeaderStyle(
         centerHeaderTitle: true,
         formatButtonVisible: false,
-        titleTextStyle: GoogleFonts.orbitron(color: AppColor.themeColor),
+        titleTextStyle: GoogleFonts.orbitron(color: AppColor.kPurple),
       ),
       builders: CalendarBuilders(
         selectedDayBuilder: (context, date, _) {
@@ -110,7 +110,7 @@ class _MyCalendarState extends State<MyCalendar> with TickerProviderStateMixin {
             opacity: Tween(begin: 0.0, end: 1.0).animate(_animationController),
             child: Container(
               padding: const EdgeInsets.only(top: 5.0, left: 6.0),
-              color: AppColor.themeColor,
+              color: AppColor.kPurple,
               width: 100,
               height: 100,
               child: Text(

@@ -14,7 +14,7 @@
   <!-- Favicon -->
   <link rel="shortcut icon" type="image/png" href="favicon.png"/>
 
-  <title>hackathon2020</title>
+  <title>Cyberpunk 2020</title>
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
@@ -28,6 +28,23 @@
       });
     }
   </script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-firestore.js"></script>
+  <script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDvlH4AWQ_NQx3SAyEPEJM7NoIHECHPRbQ",
+    authDomain: "cyberpunk20-20.firebaseapp.com",
+    databaseURL: "https://cyberpunk20-20.firebaseio.com",
+    projectId: "cyberpunk20-20",
+    storageBucket: "cyberpunk20-20.appspot.com",
+    messagingSenderId: "235565510931",
+    appId: "1:235565510931:web:9f72336831e543934aaae6"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
   <script src="main.dart.js" type="application/javascript"></script>
 </body>
 </html>

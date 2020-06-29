@@ -3,10 +3,21 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hackathon2020/src/helpers/utils/const.dart';
 import 'package:slide_digital_clock/slide_digital_clock.dart';
 
-class CenterClock extends StatelessWidget {
+class CenterClock extends StatefulWidget {
   const CenterClock({
     Key key,
   }) : super(key: key);
+
+  @override
+  _CenterClockState createState() => _CenterClockState();
+}
+
+class _CenterClockState extends State<CenterClock> {
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

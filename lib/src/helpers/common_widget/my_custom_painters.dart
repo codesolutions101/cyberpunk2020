@@ -6,7 +6,7 @@ import 'package:hackathon2020/src/helpers/utils/const.dart';
 /// Draws a circle if placed into a square widget.
 class CirclePainter extends CustomPainter {
   final _paint = Paint()
-    ..color = AppColor.themeColor
+    ..color = AppColor.kPurple
     ..strokeWidth = 10
     // Use [PaintingStyle.fill] if you want the circle to be filled.
     ..style = PaintingStyle.stroke;
@@ -59,7 +59,7 @@ class CustomCirclePainter extends CustomPainter {
 
 class RectanglePainter extends CustomPainter {
   final _paint = Paint()
-    ..color = AppColor.themeColor
+    ..color = AppColor.kPurple
     ..strokeWidth = 4
     // Use [PaintingStyle.fill] if you want the circle to be filled.
     ..style = PaintingStyle.stroke;

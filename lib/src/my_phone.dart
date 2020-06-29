@@ -28,8 +28,7 @@ class _MyPhoneState extends State<MyPhone> {
         child: Center(
           child: Text(
             text,
-            style:
-                GoogleFonts.orbitron(color: AppColor.themeColor, fontSize: 20),
+            style: GoogleFonts.orbitron(color: AppColor.kPurple, fontSize: 20),
           ),
         ),
       ),
@@ -114,12 +113,12 @@ class _MyPhoneState extends State<MyPhone> {
               onPressed: null,
               icon: Icon(
                 Icons.phone,
-                color: AppColor.themeColor,
+                color: AppColor.kPurple,
               ),
               label: Text(
                 'Call',
-                style: GoogleFonts.orbitron(
-                    color: AppColor.themeColor, fontSize: 20),
+                style:
+                    GoogleFonts.orbitron(color: AppColor.kPurple, fontSize: 20),
               ),
             )
           ],

@@ -57,6 +57,10 @@ class _MyStopWatchState extends State<MyStopWatch> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Image.asset(
+              AppColor.cyberPunkImage,
+              scale: 1.0,
+            ),
             Padding(
               padding: const EdgeInsets.only(bottom: 0),
               child: StreamBuilder<int>(
@@ -75,7 +79,7 @@ class _MyStopWatchState extends State<MyStopWatch> {
                             fontSize: 150,
                             fontFamily: 'Helvetica',
                             fontWeight: FontWeight.bold,
-                            color: AppColor.themeColor,
+                            color: AppColor.kPurple,
                           ),
                         ),
                       ),
@@ -95,7 +99,7 @@ class _MyStopWatchState extends State<MyStopWatch> {
                         children: <Widget>[
                           RaisedButton(
                             padding: const EdgeInsets.all(20),
-                            color: AppColor.themeColor,
+                            color: AppColor.kPurple,
                             shape: const StadiumBorder(),
                             onPressed: () async {
                               _stopWatchTimer.onExecute
@@ -115,7 +119,7 @@ class _MyStopWatchState extends State<MyStopWatch> {
                           ),
                           RaisedButton(
                             padding: const EdgeInsets.all(20),
-                            color: AppColor.themeColor,
+                            color: AppColor.kPurple,
                             shape: const StadiumBorder(),
                             onPressed: () async {
                               _stopWatchTimer.onExecute
@@ -136,7 +140,7 @@ class _MyStopWatchState extends State<MyStopWatch> {
                           ),
                           RaisedButton(
                             padding: const EdgeInsets.all(20),
-                            color: AppColor.themeColor,
+                            color: AppColor.kPurple,
                             shape: const StadiumBorder(),
                             onPressed: () async {
                               _stopWatchTimer.onExecute
